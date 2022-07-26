@@ -100,7 +100,7 @@ GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetResizing(-1,904)
 GUISwitch($frmMain,_GUICtrlTab_SetCurFocus($tab,1)&GUICtrlRead ($tab, 1))
 $editDateFieldReport = GUICtrlCreateDate("",23,73,130,21,$DTS_SHORTDATEFORMAT,-1)
-GUICtrlSetResizing(-1,256)
+GUICtrlSetResizing(-1,386)
 GUISwitch($frmMain,_GUICtrlTab_SetCurFocus($tab,0)&GUICtrlRead ($tab, 1))
 GUICtrlCreateGroup("",157,76,735,448,-1,-1)
 GUICtrlSetResizing(-1,904)
@@ -195,7 +195,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=0
-[0x00081EE4]
+[0x00081C1A]
 order=0
 [TABPAGE3]
 page=3
@@ -248,7 +248,7 @@ gui_event_resized=
 gui_event_dropped=
 defaultfont=MS Sans Serif
 defaultfontsize=8
-[0x00011EE8]
+[0x00011C1E]
 type=input
 handle=434
 locked=0
@@ -277,7 +277,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011EEA]
+[0x00011C20]
 type=input
 handle=435
 locked=0
@@ -306,7 +306,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=4
-[0x00011EEC]
+[0x00011C22]
 type=input
 handle=436
 locked=0
@@ -335,7 +335,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=3
-[0x00011EEE]
+[0x00011C24]
 type=label
 handle=437
 locked=0
@@ -364,7 +364,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011EF0]
+[0x00011C26]
 type=label
 handle=438
 locked=0
@@ -393,7 +393,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=19
-[0x00011EF2]
+[0x00011C28]
 type=label
 handle=439
 locked=0
@@ -422,7 +422,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=20
-[0x00011EF4]
+[0x00011C2A]
 type=button
 handle=440
 locked=0
@@ -451,7 +451,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011EF6]
+[0x00011C2C]
 type=label
 handle=441
 locked=0
@@ -480,7 +480,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=21
-[0x00011EF8]
+[0x00011C2E]
 type=label
 handle=442
 locked=0
@@ -509,7 +509,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=22
-[0x00011EFA]
+[0x00011C30]
 type=label
 handle=443
 locked=0
@@ -538,7 +538,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=23
-[0x00011EFC]
+[0x00011C32]
 type=label
 handle=444
 locked=0
@@ -567,7 +567,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=24
-[0x00011EFE]
+[0x00011C34]
 type=input
 handle=445
 locked=0
@@ -596,7 +596,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=7
-[0x00011F00]
+[0x00011C36]
 type=input
 handle=446
 locked=0
@@ -625,7 +625,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=8
-[0x00011F02]
+[0x00011C38]
 type=input
 handle=447
 locked=0
@@ -654,7 +654,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=14
-[0x00011F04]
+[0x00011C3A]
 type=input
 handle=448
 locked=0
@@ -683,7 +683,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=15
-[0x00011F06]
+[0x00011C3C]
 type=button
 handle=449
 locked=0
@@ -712,7 +712,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F08]
+[0x00011C3E]
 type=date
 handle=450
 locked=0
@@ -741,7 +741,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F0A]
+[0x00011C40]
 type=listview
 handle=451
 locked=0
@@ -770,7 +770,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00021F10]
+[0x00021C46]
 type=group
 handle=452
 locked=0
@@ -799,7 +799,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F12]
+[0x00011C48]
 type=radio
 handle=453
 locked=0
@@ -828,7 +828,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F14]
+[0x00011C4A]
 type=radio
 handle=454
 locked=0
@@ -857,7 +857,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F16]
+[0x00011C4C]
 type=radio
 handle=455
 locked=0
@@ -886,7 +886,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F18]
+[0x00011C4E]
 type=label
 handle=456
 locked=0
@@ -915,7 +915,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=25
-[0x00011F1A]
+[0x00011C50]
 type=group
 handle=457
 locked=0
@@ -944,11 +944,11 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F1C]
+[0x00011C52]
 type=date
 handle=458
 locked=0
-resize=256
+resize=386
 x=23
 y=73
 width=130
@@ -973,7 +973,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F1E]
+[0x00011C54]
 type=button
 handle=459
 locked=0
@@ -1002,7 +1002,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F20]
+[0x00011C56]
 type=button
 handle=460
 locked=0
@@ -1031,7 +1031,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=31
-[0x00011F22]
+[0x00011C58]
 type=radio
 handle=461
 locked=0
@@ -1060,7 +1060,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F24]
+[0x00011C5A]
 type=radio
 handle=462
 locked=0
@@ -1089,7 +1089,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F26]
+[0x00011C5C]
 type=combo
 handle=463
 locked=0
@@ -1118,7 +1118,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F2C]
+[0x00011C62]
 type=group
 handle=464
 locked=0
@@ -1147,7 +1147,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F2E]
+[0x00011C64]
 type=radio
 handle=465
 locked=0
@@ -1176,7 +1176,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F30]
+[0x00011C66]
 type=radio
 handle=466
 locked=0
@@ -1205,7 +1205,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F32]
+[0x00011C68]
 type=listview
 handle=467
 locked=0
@@ -1234,7 +1234,7 @@ tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00021F38]
+[0x00021C6E]
 type=button
 handle=468
 locked=0
@@ -1263,7 +1263,7 @@ tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F3A]
+[0x00011C70]
 type=button
 handle=469
 locked=0
@@ -1292,7 +1292,7 @@ tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F3C]
+[0x00011C72]
 type=button
 handle=470
 locked=0
@@ -1321,7 +1321,7 @@ tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F3E]
+[0x00011C74]
 type=input
 handle=471
 locked=0
@@ -1350,7 +1350,7 @@ tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F40]
+[0x00011C76]
 type=button
 handle=472
 locked=0
@@ -1379,7 +1379,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F42]
+[0x00011C78]
 type=label
 handle=473
 locked=0
@@ -1408,7 +1408,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F44]
+[0x00011C7A]
 type=button
 handle=474
 locked=0
@@ -1437,7 +1437,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F46]
+[0x00011C7C]
 type=input
 handle=475
 locked=0
@@ -1466,7 +1466,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=47
-[0x00011F48]
+[0x00011C7E]
 type=radio
 handle=476
 locked=0
@@ -1495,7 +1495,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F4A]
+[0x00011C80]
 type=radio
 handle=477
 locked=0
@@ -1524,7 +1524,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F4C]
+[0x00011C82]
 type=radio
 handle=478
 locked=0
@@ -1553,7 +1553,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F4E]
+[0x00011C84]
 type=group
 handle=479
 locked=0
@@ -1582,7 +1582,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F50]
+[0x00011C86]
 type=checkbox
 handle=480
 locked=0

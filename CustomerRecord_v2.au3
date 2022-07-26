@@ -57,6 +57,7 @@ Local $userName = "", $checkRadioReport = "Urgent",  $checkRadioSearch = "Name",
 Local $previousKey = ""
 Local $rawEditData = ""
 Local $sStyle = "yyyy-MM-dd"
+Local $laptopChassisType = [8 , 9, 10, 11, 12, 14, 18, 21]
 GUICtrlSendMsg($editDateFieldReport, $DTM_SETFORMATW, 0, $sStyle)
 GUICtrlSendMsg($editDateField, $DTM_SETFORMATW, 0, $sStyle)
 
@@ -71,17 +72,10 @@ Else
 EndIf
 
 
-
-;$checkDevice = StringSplit((StringStripWS(_GetDOSOutput("WMIC PATH Win32_Battery Get EstimatedChargeRemaining"), 4)), " ")
-checkDeviceType()
-
+GUICtrlSetData($cbProductType, checkDeviceType())
 
 
 #EndRegion Initialzie
-
-
-
-
 
 
 #Region While
@@ -530,10 +524,15 @@ Func _excuteSQL($sqlQuery)
 EndFunc
 
 Func checkDeviceType()
-	$chassistype =  StringSplit((StringStripWS(_GetDOSOutput("wmic path win32_systemenclosure get chassistypes"), 4)), " ")
-	 ;$chassistype[2] is chassistype number.
-	$testtype = StringRegExp($chassistype[2], '{(.*?)}', $STR_REGEXPARRAYMATCH)
-	_ArrayDisplay($testtype)
+	$getChassis =  StringSplit((StringStripWS(_GetDOSOutput("wmic path win32_systemenclosure get chassistypes"), 4)), " ")
+	;$getChassis[2] is chassistype number.
+	$chassistype = StringRegExp($getChassis[2], '{(.*?)}', $STR_REGEXPARRAYMATCH)
+	
+	If _ArraySearch($laptopChassisType, $chassistype[0]) =  -1 Then 
+		Return "PC"
+	Else 
+		Return "Laptop"
+	EndIf
 	
 EndFunc
 	
