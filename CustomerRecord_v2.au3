@@ -39,8 +39,10 @@ HotKeySet("^`", "SendReport")
 HotKeySet("^1", "unlockSendKey")
 
 Local $hDLL = DllOpen("user32.dll")
-
-_MySQL_InitLibrary(@ScriptDir & "\libsql\libmysql.dll")
+_MySQL_InitLibrary()
+;_MySQL_InitLibrary(@ScriptDir & "\libsql\libmysql.dll")
+;MsgBox(1, 1, @ScriptDir & "\libsql\libmysql.dll")
+;_MySQL_InitLibrary(@ScriptDir & "\libsql\libmySQL_x64.dll")
 If @error Then Exit MsgBox(0, 'Error', "DLL file not found!")
 $MysqlConn = _MySQL_Init()
 
