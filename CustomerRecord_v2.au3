@@ -70,12 +70,10 @@ EndIf
 
 
 
-$checkDevice = StringSplit((StringStripWS(_GetDOSOutput("WMIC PATH Win32_Battery Get EstimatedChargeRemaining"), 4)), " ")
+;$checkDevice = StringSplit((StringStripWS(_GetDOSOutput("WMIC PATH Win32_Battery Get EstimatedChargeRemaining"), 4)), " ")
+checkDeviceType()
 
 
-If UBound($checkDevice ) < 3 Then 
-	GUICtrlSetData($cbProductType, "PC")
-EndIf
 
 #EndRegion Initialzie
 
@@ -526,6 +524,14 @@ Func _excuteSQL($sqlQuery)
 	$arrResult = _MySQL_Fetch_Result_StringArray($res)
 	
 	Return $arrResult
+	
+EndFunc
+
+Func checkDeviceType()
+	$chassistype =  StringSplit((StringStripWS(_GetDOSOutput("wmic path win32_systemenclosure get chassistypes"), 4)), " ")
+	 ;$chassistype[2] is chassistype number.
+	$testtype = StringRegExp($chassistype[2], '{(.*?)}', $STR_REGEXPARRAYMATCH)
+	_ArrayDisplay($testtype)
 	
 EndFunc
 	
