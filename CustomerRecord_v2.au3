@@ -258,11 +258,9 @@ Func SendReport()
 	
 	$keytoSend = StringSplit(GUICtrlRead(GUICtrlRead($listviewReport)), "|")
 		
-	
-	
 	;_ArrayDisplay($keytoSend)
 	If UBound($keytoSend) > 5 Then
-		If $previousKey <> $keytoSend[8] Then 
+		If $previousKey <> $keytoSend[13] Then 
 			$staffID = $keytoSend[11]
 			If $checkRadioReport = "Urgent" Then
 				$stockID = 100010				
@@ -297,7 +295,7 @@ Func SendReport()
 			
 		EndIf
 		$stockID = Null 
-		$previousKey = $keytoSend[6]
+		$previousKey = $keytoSend[13]
 	EndIf
 	
 EndFunc
