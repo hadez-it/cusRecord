@@ -18,6 +18,7 @@
 #include "Forms\frmMain.isf"
 #include "Forms\$frmLogin.isf"
 #include "Forms\frmEditRecord.isf"
+#include "Forms\frmAdvReport.isf"
 
 
 

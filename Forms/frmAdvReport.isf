@@ -1,0 +1,202 @@
+; -- Created with ISN Form Studio 2 for ISN AutoIt Studio -- ;
+#include <StaticConstants.au3>
+#include <GUIConstantsEx.au3>
+#include <WindowsConstants.au3>
+#Include <GuiButton.au3>
+#include <GuiListView.au3>
+#include <DateTimeConstants.au3>
+#include <EditConstants.au3>
+
+$frmAdvReport = GUICreate("Advanced Report",1280,650,-1,-1,-1,-1)
+GUICtrlCreatelistview("",20,60,1234,563,-1,$WS_EX_CLIENTEDGE)
+GUICtrlCreateDate("Wednesday, July 27, 2022",25,18,129,21,$DTS_SHORTDATEFORMAT,-1)
+GUICtrlCreateDate("Wednesday, July 27, 2022",163,18,129,21,$DTS_SHORTDATEFORMAT,-1)
+GUICtrlCreateInput("",982,18,200,21,-1,$WS_EX_CLIENTEDGE)
+GUICtrlCreateButton("Search",1192,16,60,24,$BS_VCENTER,-1)
+GUICtrlSetBkColor(-1,"-2")
+
+
+
+#cs
+[gui]
+Handle_deklaration=default
+Handle_deklaration_const=false
+title=Advanced Report
+breite=1280
+hoehe=650
+style=-1
+exstyle=-1
+bgcolour=0xF0F0F0
+bgimage=none
+handle=$frmAdvReport
+parent=
+code=
+codebeforegui=
+xpos=-1
+ypos=-1
+center_gui=true
+title_textmode=normal
+isf_include_once=false
+only_controls_in_isf=false
+const_modus=default
+gui_code_in_function=false
+gui_code_in_function_name=
+gui_event_close=
+gui_event_minimize=
+gui_event_restore=
+gui_event_maximize=
+gui_event_mousemove=
+gui_event_primarydown=
+gui_event_primaryup=
+gui_event_secoundarydown=
+gui_event_secoundaryup=
+gui_event_resized=
+gui_event_dropped=
+defaultfont=MS Sans Serif
+defaultfontsize=8
+[0x00091E6A]
+type=listview
+handle=433
+locked=0
+resize=
+x=20
+y=60
+width=1234
+height=563
+func=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=
+text=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=$WS_EX_CLIENTEDGE
+bgcolour=
+code=
+order=0
+tabpage=-1
+iconindex=
+iconlarge=0
+textmode=text
+[0x00031F7A]
+type=date
+handle=434
+locked=0
+resize=
+x=25
+y=18
+width=129
+height=21
+func=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=
+text=Wednesday, July 27, 2022
+state=$GUI_SHOW+$GUI_ENABLE
+style=$DTS_SHORTDATEFORMAT
+exstyle=
+bgcolour=
+code=
+order=2
+tabpage=-1
+iconindex=
+iconlarge=0
+textmode=text
+[0x00021F7C]
+type=date
+handle=435
+locked=0
+resize=
+x=163
+y=18
+width=129
+height=21
+func=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=
+text=Wednesday, July 27, 2022
+state=$GUI_SHOW+$GUI_ENABLE
+style=$DTS_SHORTDATEFORMAT
+exstyle=
+bgcolour=
+code=
+order=3
+tabpage=-1
+iconindex=
+iconlarge=0
+textmode=text
+[0x000B1A58]
+type=input
+handle=444
+locked=0
+resize=
+x=982
+y=18
+width=200
+height=21
+func=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=
+text=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=$WS_EX_CLIENTEDGE
+bgcolour=
+code=
+order=4
+tabpage=-1
+iconindex=
+iconlarge=0
+textmode=text
+[0x00081A4E]
+type=button
+handle=445
+locked=0
+resize=
+x=1192
+y=16
+width=60
+height=24
+func=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=
+text=Search
+state=$GUI_SHOW+$GUI_ENABLE
+style=$BS_VCENTER
+exstyle=
+bgcolour=-2
+code=
+order=5
+tabpage=-1
+iconindex=
+iconlarge=0
+textmode=text
+#ce
