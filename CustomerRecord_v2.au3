@@ -59,6 +59,8 @@ Local $previousKey = ""
 Local $rawEditData = ""
 Local $sStyle = "yyyy-MM-dd"
 Local $laptopChassisType = [8 , 9, 10, 11, 12, 14, 18, 21]
+Local $arrMousePOS = IniReadSection(@ScriptDir & "\config.ini", "mousepos")
+
 GUICtrlSendMsg($editDateFieldReport, $DTM_SETFORMATW, 0, $sStyle)
 GUICtrlSendMsg($editDateField, $DTM_SETFORMATW, 0, $sStyle)
 
@@ -271,28 +273,28 @@ Func SendReport()
 			$send_keys = StringFormat("%s/%s-%s/%s", $keytoSend[7], $sn_imei, $keytoSend[8], $keytoSend[10])
 			WinActivate("IAIMS Web Application - Google Chrome", "")
 			Sleep(500)
-			ControlClick("IAIMS Web Application - Google Chrome", "", "",  "left", 3, 372, 274)
+			ControlClick("IAIMS Web Application - Google Chrome", "", "",  "left", 3, $arrMousePOS[1][1], $arrMousePOS[2][1])
 			Sleep(300)
 			ControlSend("", "","", $send_keys, 1)
 			Sleep(300)
-			ControlClick("IAIMS Web Application - Google Chrome", "", "",  "left", 3, 685, 182)
+			ControlClick("IAIMS Web Application - Google Chrome", "", "",  "left", 3, $arrMousePOS[3][1], $arrMousePOS[4][1])
 			Sleep(300)
 			ControlSend("", "", "", $staffID)
 			Sleep(1000)
-			ControlClick("IAIMS Web Application - Google Chrome", "", "",  "left", 3, 1178, 180)
+			ControlClick("IAIMS Web Application - Google Chrome", "", "",  "left", 3, $arrMousePOS[5][1], $arrMousePOS[6][1])
 			Sleep(500)
 			ControlSend("", "", "", "MMK", 1)
 			ControlSend("", "", "", "{ENTER}")
 			Sleep(500)
-			ControlClick("IAIMS Web Application - Google Chrome", "", "",  "left", 3, 120, 396)
+			ControlClick("IAIMS Web Application - Google Chrome", "", "",  "left", 3, $arrMousePOS[7][1], $arrMousePOS[8][1])
 			Sleep(300)
 			ControlSend("", "", "", "UN-SVC", 1)
 			Sleep(300)
-			ControlClick("IAIMS Web Application - Google Chrome", "", "",  "left", 3, 280, 398)
+			ControlClick("IAIMS Web Application - Google Chrome", "", "",  "left", 3, $arrMousePOS[9][1], $arrMousePOS[10][1])
 			Sleep(300)
 			ControlSend("", "", "", $stockID, 1)
 			Sleep(300)
-			ControlClick("IAIMS Web Application - Google Chrome", "", "",  "left", 3, 810, 479 )
+			ControlClick("IAIMS Web Application - Google Chrome", "", "",  "left", 3, $arrMousePOS[11][1], $arrMousePOS[12][1] )
 			
 		EndIf
 		$stockID = Null 

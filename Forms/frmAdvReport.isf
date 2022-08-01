@@ -54,7 +54,7 @@ gui_event_resized=
 gui_event_dropped=
 defaultfont=MS Sans Serif
 defaultfontsize=8
-[0x00091E6A]
+[0x00081DF0]
 type=listview
 handle=433
 locked=0
@@ -83,7 +83,7 @@ tabpage=-1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031F7A]
+[0x00021DF6]
 type=date
 handle=434
 locked=0
@@ -112,7 +112,7 @@ tabpage=-1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00021F7C]
+[0x00011DF8]
 type=date
 handle=435
 locked=0
@@ -141,9 +141,9 @@ tabpage=-1
 iconindex=
 iconlarge=0
 textmode=text
-[0x000B1A58]
+[0x00011DFA]
 type=input
-handle=444
+handle=436
 locked=0
 resize=
 x=982
@@ -170,9 +170,9 @@ tabpage=-1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00081A4E]
+[0x00011DFC]
 type=button
-handle=445
+handle=437
 locked=0
 resize=
 x=1192
