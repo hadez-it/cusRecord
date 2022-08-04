@@ -390,15 +390,19 @@ Func AddCustomerRecord()
 	$productSolution = StringRegExpReplace(GUICtrlRead($editSolution),  '"', "")	
 	
 	If  $productModel <> "" Then
-
 			
 		$query = StringFormat('INSERT INTO records(Name,Phone,City,ProductType,Warranty,ModelName,Serialnumber,Error,Solution,TechName,recordDate,AsUrg) VALUES("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s");', $customerName, $customerPhNo, $customerAddress, $productType,$productWarranty, $productModel, $productSN, $productError,$productSolution, $userName, $date, $checkRadioRecord)
 
-		_MySQL_Real_Query($MysqlConn, $query)
+		$resultTest = _MySQL_Real_Query($MysqlConn, $query)
+		If $resultTest = 0 Then
+			GUICtrlSetState($editName, $GUI_FOCUS)
+			MsgBox(0, "Complete", "Record Added", 0, $frmMain)
+			$query = ""
+		Else 
+			MsgBox(0, "Error", "Failed to add record.", 0, $frmMain)
+		EndIf
 		
-		GUICtrlSetState($editName, $GUI_FOCUS)
-		MsgBox(0, "Complete", "Record Added", 0, $frmMain)
-		$query = ""
+		
 	Else 
 		MsgBox(0, "ERROR", "Fill text field.", 0, $frmMain)
 	EndIf
