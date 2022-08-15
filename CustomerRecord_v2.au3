@@ -103,12 +103,6 @@ While 1
 			ToggleRadioWarranty()
 		Case $radioUrgentReport
 			ToggleRadioWarranty()
-		Case $radioName
-			$checkRadioSearch = "Name"
-		Case $radioPhone
-			$checkRadioSearch = "Phone"
-		Case $radioSerial
-			$checkRadioSearch = "SerialNumber"
 			
 		Case $btnLogin
 			Login()
@@ -143,8 +137,6 @@ While 1
 			GUISetState(@SW_SHOW, $frmMain)
 			GUISetState(@SW_HIDE, $frmEditRecord)
 			
-		Case $btnSearchCustomer
-			ShowReport($checkRadioSearch)
 		
 	EndSwitch	
 	
@@ -217,34 +209,6 @@ Func Login()
 	EndIf	
 EndFunc
 
-Func SearchRecord($sToSearch)
-	
-	$sSearchData = GUICtrlRead($editSearch)
-	
-	If $checkRadioReport = "UrgentReport" Then 
-		Switch $sToSearch
-		
-			Case "Name"
-				$sqlQuerrySearch = StringFormat('SELECT Name,Phone,City,ProductType,Warranty,ModelName,Serialnumber,Error,Solution,TechName,Date FROM UrgentRecords WHERE Name LIKE "%%s%";', $sSearchData)
-			Case "Phone"
-				$sqlQuerrySearch = StringFormat('SELECT Name,Phone,City,ProductType,Warranty,ModelName,Serialnumber,Error,Solution,TechName,Date FROM UrgentRecords WHERE Phone LIKE "%%s%";', $sSearchData)
-			Case "SerialNumber"
-				$sqlQuerrySearch = StringFormat('SELECT Name,Phone,City,ProductType,Warranty,ModelName,Serialnumber,Error,Solution,TechName,Date FROM UrgentRecords WHERE Serialnumber LIKE "%%s%";', $sSearchData)
-		EndSwitch 
-	Else 
-		Switch $sToSearch
-		
-			Case "Name"
-				$sqlQuerrySearch = StringFormat('SELECT Name,Phone,City,ProductType,Warranty,ModelName,Serialnumber,Error,Solution,TechName,Date FROM AssemblyRecords WHERE Name LIKE "%%s%";', $sSearchData)
-			Case "Phone"
-				$sqlQuerrySearch = StringFormat('SELECT Name,Phone,City,ProductType,Warranty,ModelName,Serialnumber,Error,Solution,TechName,Date FROM AssemblyRecords WHERE Phone LIKE "%%s%";', $sSearchData)
-			Case "SerialNumber"
-				$sqlQuerrySearch = StringFormat('SELECT Name,Phone,City,ProductType,Warranty,ModelName,Serialnumber,Error,Solution,TechName,Date FROM AssemblyRecords WHERE Serialnumber LIKE "%%s%";', $sSearchData)
-		EndSwitch
-	
-	EndIf
-	
-EndFunc
 
 Func DeleteReport()
 		$selectedReport = StringSplit(GUICtrlRead(GUICtrlRead($listviewReport)), "|") ;selectedReport[13] is "id".
@@ -308,9 +272,16 @@ Func unlockSendKey()
 EndFunc
 
 Func ShowReport($sSearch)
+	Global $aItems
+	Global $oDictionary = ObjCreate("Scripting.Dictionary")
+	$resultitem = 1
+	If @error Then
+		MsgBox(0, '', 'Error creating the dictionary object')
+	EndIf 
 	$date = GUICtrlRead($editDateFieldReport)	
 	$pcCount = 0
 	_GUICtrlListView_DeleteAllItems($listviewReport)
+	_GUICtrlListView_DeleteAllItems($listviewTechQty)
 	
 	$query = StringFormat('SELECT * FROM records WHERE ' & $cs& ' TechName="%s" AND '& $ce& ' recordDate="%s" AND AsUrg="%s" AND '& $checkMobile  & ' ProductType="Mobile";', $userName, $date, $checkRadioReport)
 	ConsoleWrite($query)
@@ -320,10 +291,27 @@ Func ShowReport($sSearch)
 		If $arrListReport[$i][4] = "PC" Then
 			GUICtrlSetBkColor(-1,0xFFFF00 )
 			$pcCount += 1
-		EndIf		
-	Next
+		EndIf
+		
+		$aKeys = $oDictionary.Keys
+		
+		If _ArraySearch($aKeys, $arrListReport[$i][10]) = -1 Then
+			$oDictionary.Add ($arrListReport[$i][10], int(1) )
 			
-
+		Else 
+			$techCount = $oDictionary.Item($arrListReport[$i][10])
+			$oDictionary.Item ($arrListReport[$i][10]) = $techCount + 1
+			
+		EndIf
+		
+	Next
+	$aItems = $oDictionary.Items
+	$aKeys = $oDictionary.Keys
+	
+	For $x = 0 To $oDictionary.Count -1
+        GUICtrlCreateListViewItem(StringFormat("%s|%s",$aKeys[$x],$aItems[$x] ), $listviewTechQty)
+    Next
+	
 	GUICtrlSetData($lblTotalPCs,"Total : " & $i -1 & " / LT : " & ($i -1) - $pcCount & " , PC : " & $pcCount)
 	$arrListReport = Null 	
 	
