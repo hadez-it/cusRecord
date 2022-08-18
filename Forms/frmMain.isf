@@ -141,7 +141,7 @@ GUICtrlSetResizing(-1,256)
 GUISwitch($frmMain,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
 $listviewUser = GUICtrlCreatelistview("ID|TECH NAME|URGENT/ASSEMBLY|isAdmin",201,45,602,507,$LVS_SORTASCENDING,-1)
 GUISwitch($frmMain,_GUICtrlTab_SetCurFocus($tab,1)&GUICtrlRead ($tab, 1))
-$listviewTechQty = GUICtrlCreatelistview("Tech|Qty",10,354,159,201,-1,$WS_EX_CLIENTEDGE)
+$listviewTechQty = GUICtrlCreatelistview("TechName|Qty",10,354,159,201,-1,$WS_EX_CLIENTEDGE)
 GUICtrlSetResizing(-1,256)
 $btnEdit = GUICtrlCreateButton("Edit",40,243,100,30,-1,-1)
 GUICtrlSetResizing(-1,258)
@@ -184,7 +184,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=0
-[0x00031CF6]
+[0x00082034]
 order=0
 [TABPAGE3]
 page=3
@@ -237,7 +237,7 @@ gui_event_resized=
 gui_event_dropped=
 defaultfont=MS Sans Serif
 defaultfontsize=8
-[0x00041CF4]
+[0x00012038]
 type=input
 handle=434
 locked=0
@@ -266,7 +266,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031CF8]
+[0x0001203A]
 type=input
 handle=435
 locked=0
@@ -295,7 +295,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=4
-[0x00031CFA]
+[0x0001203C]
 type=input
 handle=436
 locked=0
@@ -324,7 +324,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=3
-[0x00031CFC]
+[0x0001203E]
 type=label
 handle=437
 locked=0
@@ -353,7 +353,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031CFE]
+[0x00012040]
 type=label
 handle=438
 locked=0
@@ -382,7 +382,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=19
-[0x00031D00]
+[0x00012042]
 type=label
 handle=439
 locked=0
@@ -411,7 +411,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=20
-[0x00031D02]
+[0x00012044]
 type=button
 handle=440
 locked=0
@@ -440,7 +440,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D04]
+[0x00012046]
 type=label
 handle=441
 locked=0
@@ -469,7 +469,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=21
-[0x00041D06]
+[0x00012048]
 type=label
 handle=442
 locked=0
@@ -498,7 +498,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=22
-[0x00031D0C]
+[0x0001204A]
 type=label
 handle=443
 locked=0
@@ -527,7 +527,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=23
-[0x00031D0A]
+[0x0001204C]
 type=label
 handle=444
 locked=0
@@ -556,7 +556,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=24
-[0x00041D08]
+[0x0001204E]
 type=input
 handle=445
 locked=0
@@ -585,7 +585,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=7
-[0x00031D0E]
+[0x00012050]
 type=input
 handle=446
 locked=0
@@ -614,7 +614,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=8
-[0x00031D10]
+[0x00012052]
 type=input
 handle=447
 locked=0
@@ -643,7 +643,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=14
-[0x00031D12]
+[0x00012054]
 type=input
 handle=448
 locked=0
@@ -672,7 +672,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=15
-[0x00041D1C]
+[0x00012056]
 type=button
 handle=449
 locked=0
@@ -701,7 +701,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D16]
+[0x00012058]
 type=date
 handle=450
 locked=0
@@ -730,7 +730,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D14]
+[0x0001205A]
 type=listview
 handle=451
 locked=0
@@ -759,7 +759,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00051D1E]
+[0x00022060]
 type=group
 handle=452
 locked=0
@@ -788,7 +788,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D20]
+[0x00012062]
 type=radio
 handle=453
 locked=0
@@ -817,7 +817,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D22]
+[0x00012064]
 type=radio
 handle=454
 locked=0
@@ -846,7 +846,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D24]
+[0x00012066]
 type=radio
 handle=455
 locked=0
@@ -875,7 +875,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D26]
+[0x00012068]
 type=label
 handle=456
 locked=0
@@ -904,7 +904,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=25
-[0x00031D28]
+[0x0001206A]
 type=group
 handle=457
 locked=0
@@ -933,7 +933,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D2A]
+[0x0001206C]
 type=date
 handle=458
 locked=0
@@ -962,7 +962,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00041D2C]
+[0x0001206E]
 type=button
 handle=459
 locked=0
@@ -991,7 +991,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00041D50]
+[0x00012070]
 type=radio
 handle=460
 locked=0
@@ -1020,7 +1020,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00060044]
+[0x00012072]
 type=radio
 handle=461
 locked=0
@@ -1049,7 +1049,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00070048]
+[0x00012074]
 type=combo
 handle=462
 locked=0
@@ -1078,7 +1078,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D32]
+[0x0001207A]
 type=group
 handle=463
 locked=0
@@ -1107,7 +1107,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D38]
+[0x0001207C]
 type=radio
 handle=464
 locked=0
@@ -1136,7 +1136,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D36]
+[0x0001207E]
 type=radio
 handle=465
 locked=0
@@ -1165,7 +1165,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D34]
+[0x00012080]
 type=listview
 handle=466
 locked=0
@@ -1194,7 +1194,7 @@ tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00041D3E]
+[0x00022086]
 type=button
 handle=467
 locked=0
@@ -1223,7 +1223,7 @@ tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00041D44]
+[0x00012088]
 type=button
 handle=468
 locked=0
@@ -1252,7 +1252,7 @@ tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D42]
+[0x0001208A]
 type=button
 handle=469
 locked=0
@@ -1281,7 +1281,7 @@ tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D40]
+[0x0001208C]
 type=input
 handle=470
 locked=0
@@ -1310,7 +1310,7 @@ tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00041D46]
+[0x0001208E]
 type=button
 handle=471
 locked=0
@@ -1339,7 +1339,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D48]
+[0x00012090]
 type=label
 handle=472
 locked=0
@@ -1368,7 +1368,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D4A]
+[0x00012092]
 type=button
 handle=473
 locked=0
@@ -1397,7 +1397,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D4C]
+[0x00012094]
 type=checkbox
 handle=474
 locked=0
@@ -1426,7 +1426,7 @@ tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00031D4E]
+[0x00012096]
 type=listview
 handle=475
 locked=0
@@ -1444,7 +1444,7 @@ tooltip=
 bgimage=
 textcolour=0x000000
 id=$listviewTechQty
-text=Tech|Qty
+text=TechName|Qty
 state=$GUI_SHOW+$GUI_ENABLE
 style=
 exstyle=$WS_EX_CLIENTEDGE

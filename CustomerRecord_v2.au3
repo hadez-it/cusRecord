@@ -122,7 +122,7 @@ While 1
 			ShowUser()
 		
 		Case $btnReport
-			ShowReport(Null)
+			ShowReport()
 		
 		Case $btnDeleteReport
 			DeleteReport()
@@ -217,16 +217,17 @@ Func DeleteReport()
 			_MySQL_Real_Query($MysqlConn, $query)
 		EndIf  
 	
-	ShowReport(Null)
+	ShowReport()
 	
 EndFunc
 	
 Func SendReport()
 	
 	$keytoSend = StringSplit(GUICtrlRead(GUICtrlRead($listviewReport)), "|")
-		
+	
 	;_ArrayDisplay($keytoSend)
 	If UBound($keytoSend) > 5 Then
+		
 		If $previousKey <> $keytoSend[13] Then 
 			$staffID = $keytoSend[11]
 			If $checkRadioReport = "Urgent" Then
@@ -234,6 +235,7 @@ Func SendReport()
 			Else 
 				$stockID = 100012
 			EndIf
+			
 			$send_keys = StringFormat("%s/%s-%s/%s", $keytoSend[7], $sn_imei, $keytoSend[8], $keytoSend[10])
 			WinActivate("IAIMS Web Application - Google Chrome", "")
 			Sleep(500)
@@ -263,6 +265,11 @@ Func SendReport()
 		EndIf
 		$stockID = Null 
 		$previousKey = $keytoSend[13]
+		$query = StringFormat('UPDATE records SET checkfoc =1 WHERE id=%d;', $keytoSend[13])
+		_MySQL_Real_Query($MysqlConn, $query)
+		
+		ShowReport()
+		
 	EndIf
 	
 EndFunc
@@ -271,10 +278,10 @@ Func unlockSendKey()
 	$previousKey = ""
 EndFunc
 
-Func ShowReport($sSearch)
+Func ShowReport()
 	Global $aItems
 	Global $oDictionary = ObjCreate("Scripting.Dictionary")
-	$resultitem = 1
+	$checkFinishedID = ""
 	If @error Then
 		MsgBox(0, '', 'Error creating the dictionary object')
 	EndIf 
@@ -287,7 +294,14 @@ Func ShowReport($sSearch)
 	ConsoleWrite($query)
 	$arrListReport = _excuteSQL($query)
 	For $i = 1 to UBound($arrListReport) - 1
-		GUICtrlCreateListViewItem(StringFormat("%d|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%d",$i, $arrListReport[$i][1],$arrListReport[$i][2],$arrListReport[$i][3],$arrListReport[$i][4],$arrListReport[$i][5],$arrListReport[$i][6],$arrListReport[$i][7],$arrListReport[$i][8],$arrListReport[$i][9],$arrListReport[$i][10],$arrListReport[$i][11],$arrListReport[$i][0]  ), $listviewReport)
+		
+		If $arrListReport[$i][13] > 0 Then
+			
+			$checkFinishedID = " *"
+		EndIf
+		
+		GUICtrlCreateListViewItem(StringFormat("%d%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%d",$i, $checkFinishedID, $arrListReport[$i][1],$arrListReport[$i][2],$arrListReport[$i][3],$arrListReport[$i][4],$arrListReport[$i][5],$arrListReport[$i][6],$arrListReport[$i][7],$arrListReport[$i][8],$arrListReport[$i][9],$arrListReport[$i][10],$arrListReport[$i][11],$arrListReport[$i][0]  ), $listviewReport)
+		$checkFinishedID = ""
 		If $arrListReport[$i][4] = "PC" Then
 			GUICtrlSetBkColor(-1,0xFFFF00 )
 			$pcCount += 1
@@ -315,6 +329,7 @@ Func ShowReport($sSearch)
 	GUICtrlSetData($lblTotalPCs,"Total : " & $i -1 & " / LT : " & ($i -1) - $pcCount & " , PC : " & $pcCount)
 	$arrListReport = Null 	
 	
+	
 EndFunc
 
 Func UpdateRecord()
@@ -335,7 +350,7 @@ Func UpdateRecord()
 	GUICtrlSetData($editNewPhone, "")
 	GUISetState(@SW_SHOW, $frmMain)
 	GUISetState(@SW_HIDE, $frmEditRecord)
-	ShowReport(Null)
+	ShowReport()
 EndFunc
 
 Func EditReport()
@@ -353,7 +368,7 @@ Func EditReport()
 		MsgBox(0,"Error", "Please select record to edit.", 0, $frmMain)
 	EndIf
 		
-		ShowReport(Null )
+		ShowReport()
 EndFunc
 
 Func AddCustomerRecord()
