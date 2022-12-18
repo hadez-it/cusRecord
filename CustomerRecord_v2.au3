@@ -19,6 +19,7 @@
 #include "Forms\$frmLogin.isf"
 #include "Forms\frmEditRecord.isf"
 #include "Forms\frmAdvReport.isf"
+#include "AdvReport.au3"
 
 
 
@@ -98,10 +99,6 @@ While 1
 		Case $radioAssembly
 			ToggleRadioWarranty()
 		Case $radioUrgent
-			ToggleRadioWarranty()
-		Case $radioAssemblyReport
-			ToggleRadioWarranty()
-		Case $radioUrgentReport
 			ToggleRadioWarranty()
 			
 		Case $btnLogin
@@ -231,9 +228,9 @@ Func SendReport()
 		If $previousKey <> $keytoSend[13] Then 
 			$staffID = $keytoSend[11]
 			If $checkRadioReport = "Urgent" Then
-				$stockID = 100010				
+				$stockID = 800701				
 			Else 
-				$stockID = 100012
+				$stockID = 800703
 			EndIf
 			
 			$send_keys = StringFormat("%s/%s-%s/%s", $keytoSend[7], $sn_imei, $keytoSend[8], $keytoSend[10])
@@ -279,6 +276,11 @@ Func unlockSendKey()
 EndFunc
 
 Func ShowReport()
+	
+	If BitAND(GUICtrlRead($radioUrgentReport), $GUI_CHECKED) = $GUI_CHECKED Then $checkRadioReport = "Urgent"
+	If BitAND(GUICtrlRead($radioAssemblyReport), $GUI_CHECKED) = $GUI_CHECKED Then $checkRadioReport = "Assembly"
+	
+	
 	Global $aItems
 	Global $oDictionary = ObjCreate("Scripting.Dictionary")
 	$checkFinishedID = ""
@@ -483,12 +485,8 @@ Func ChangeUrgentAssembly($checkRadio)
 			Next
 			$checkRadioRecord = "Urgent"
 			
-		Case "UrgentReport"
-			$checkRadioReport = "Urgent"
+		
 			
-		Case "AssemblyReport"
-
-			$checkRadioReport = "Assembly"
 	EndSwitch
 	
 	
@@ -500,9 +498,9 @@ Func ToggleRadioWarranty()
 	
 	If BitAND(GUICtrlRead($radioUrgent), $GUI_CHECKED) = $GUI_CHECKED Then ChangeUrgentAssembly("Urgent")
 
-	If BitAND(GUICtrlRead($radioUrgentReport), $GUI_CHECKED) = $GUI_CHECKED Then ChangeUrgentAssembly("UrgentReport")
 	
-	If BitAND(GUICtrlRead($radioAssemblyReport), $GUI_CHECKED) = $GUI_CHECKED Then ChangeUrgentAssembly("AssemblyReport")
+	
+	
 EndFunc
 
 
