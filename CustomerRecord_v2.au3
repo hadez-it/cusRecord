@@ -134,6 +134,8 @@ While 1
 			GUISetState(@SW_SHOW, $frmMain)
 			GUISetState(@SW_HIDE, $frmEditRecord)
 			
+		Case $btnTotalCount
+			ShowTotalCount()
 		
 	EndSwitch	
 	
@@ -295,6 +297,7 @@ Func ShowReport()
 	$query = StringFormat('SELECT * FROM records WHERE ' & $cs& ' TechName="%s" AND '& $ce& ' recordDate="%s" AND AsUrg="%s" AND '& $checkMobile  & ' ProductType="Mobile";', $userName, $date, $checkRadioReport)
 	ConsoleWrite($query)
 	$arrListReport = _excuteSQL($query)
+	
 	For $i = 1 to UBound($arrListReport) - 1
 		
 		If $arrListReport[$i][13] > 0 Then
@@ -320,7 +323,8 @@ Func ShowReport()
 			
 		EndIf
 		
-	Next
+	Next ;end create listview loop
+	
 	$aItems = $oDictionary.Items
 	$aKeys = $oDictionary.Keys
 	
@@ -496,12 +500,71 @@ EndFunc
 Func ToggleRadioWarranty()
 	If BitAND(GUICtrlRead($radioAssembly), $GUI_CHECKED) = $GUI_CHECKED Then ChangeUrgentAssembly("Assembly")
 	
-	If BitAND(GUICtrlRead($radioUrgent), $GUI_CHECKED) = $GUI_CHECKED Then ChangeUrgentAssembly("Urgent")
-
-	
-	
+	If BitAND(GUICtrlRead($radioUrgent), $GUI_CHECKED) = $GUI_CHECKED Then ChangeUrgentAssembly("Urgent")	
 	
 EndFunc
+
+Func ShowTotalCount()
+	$date = GUICtrlRead($editDateFieldReport)
+	Local $arrUrgentAssemblyQuery[2] = ["Urgent", "Assembly"]
+	Local $arrProductTypeQuery[3] = ["Laptop", "PC", "Mobile"]
+	Local $arrListViewCount
+	Local $arrListViewCountBackup[5][3]
+	Local $arrSize[1]
+	Local $arrSizeBackup[UBound($arrSize)]
+	 
+	
+	_GUICtrlListView_DeleteAllItems($listviewTotalUrgent)
+	_GUICtrlListView_DeleteAllItems($listviewTotalAssembly)
+	
+	For $urgAs In $arrUrgentAssemblyQuery 
+		$arrListViewCount = $arrListViewCountBackup
+		$listviewCol = 0
+		For $products In $arrProductTypeQuery
+	
+			$query =  StringFormat('SELECT DISTINCT TechName FROM records WHERE recordDate="%s" AND ProductType="%s" AND AsUrg="%s"', $date, $products, $urgAs )
+				
+			$arrTechNames = _excuteSQL($query)
+			
+			_ArrayAdd($arrSize, UBound($arrTechNames))
+			
+			If UBound($arrTechNames) > 0 Then 
+				For $i = 1 To UBound($arrTechNames) - 1
+					$countQuery = StringFormat('SELECT COUNT(TechName)as total FROM records WHERE TechName="%s" AND recordDate="%s" AND ProductType="%s" AND AsUrg="%s"', $arrTechNames[$i][0], $date, $products, $urgAs  )
+					
+					$arrTotalPCSTech = _excuteSQL($countQuery)
+					$arrListViewCount[$i -1][$listviewCol] = StringFormat("%s = %s", $arrTechNames[$i][0],$arrTotalPCSTech[1][0])
+				Next	
+			EndIf	
+			$listviewCol += 1
+			
+		Next ;end forlooop products
+		If $urgAs = "Urgent" Then
+			$query = StringFormat('SELECT COUNT(AsUrg) as totalUrgent FROM records WHERE recordDate="%s" AND AsUrg="Urgent";', $date)
+			$urgentTotal = _excuteSQL($query)
+			
+			For $x = 0 To _ArrayMax($arrSize) -1
+				GUICtrlCreateListViewItem(StringFormat('%s|%s|%s',$arrListViewCount[$x][0],$arrListViewCount[$x][1],$arrListViewCount[$x][2] ), $listviewTotalUrgent)
+			Next ;end adding items to listview
+			
+			GUICtrlSetData($lblUrgentTotal, "Total : " & $urgentTotal[1][0])
+		Else 
+			$query = StringFormat('SELECT COUNT(AsUrg) as totalUrgent FROM records WHERE recordDate="%s" AND AsUrg="Assembly";', $date)
+			$assemblyTotal = _excuteSQL($query)
+		
+			For $x = 0 To _ArrayMax($arrSize) -1
+				GUICtrlCreateListViewItem(StringFormat('%s|%s|%s',$arrListViewCount[$x][0],$arrListViewCount[$x][1],$arrListViewCount[$x][2] ), $listviewTotalAssembly)
+			Next ;end adding items to listview
+			
+			GUICtrlSetData($lblAssemblyTotal, "Total : " & $assemblyTotal[1][0])
+		EndIf
+		
+		$arrSize = $arrSizeBackup
+		$arrListViewCount = Null 
+	Next ;end asurg loop
+	
+EndFunc
+
 
 
 Func _GetDOSOutput($sCommand)

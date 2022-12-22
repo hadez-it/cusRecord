@@ -114,7 +114,7 @@ Dim $aGroupUrgent[7]
 	$aGroupUrgent[5] = $editError
 	$aGroupUrgent[6] = $gpWarranty
 GUISwitch($frmMain,_GUICtrlTab_SetCurFocus($tab,1)&GUICtrlRead ($tab, 1))
-$listviewReport = GUICtrlCreatelistview("No.|CustomerName|Phone|City|Type|Warranty|MODEL|SERIALNUMBER|ERROR|SOLUTION|TECHNICIAN|DATE|key",181,40,830,515,$LVS_REPORT,-1)
+$listviewReport = GUICtrlCreatelistview("No.|CustomerName|Phone|City|Type|Warranty|MODEL|SERIALNUMBER|ERROR|SOLUTION|TECHNICIAN|DATE|key",181,40,830,303,$LVS_REPORT,-1)
 GUICtrlSetResizing(-1,6)
 _GUICtrlListView_SetColumnWidth($listviewReport, 7, 200)
 $btnReport = GUICtrlCreateButton("Report",38,163,100,30,-1,-1)
@@ -128,6 +128,8 @@ GUICtrlSetOnEvent(-1,"ToggleRadioWarranty")
 GUICtrlSetResizing(-1,258)
 GUICtrlCreateGroup("Report",10,40,162,191,-1,-1)
 GUICtrlSetResizing(-1,256)
+$chMobile = GUICtrlCreateCheckbox("Mobile",53,130,60,20,-1,-1)
+GUICtrlSetResizing(-1,770)
 GUISwitch($frmMain,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
 $btnAddUser = GUICtrlCreateButton("Add",47,162,100,30,-1,-1)
 $btnRemoveUser = GUICtrlCreateButton("Remove",47,206,100,30,-1,-1)
@@ -147,8 +149,37 @@ $btnEdit = GUICtrlCreateButton("Edit",40,243,100,30,-1,-1)
 GUICtrlSetResizing(-1,258)
 $btnDeleteReport = GUICtrlCreateButton("Delete",40,279,100,30,-1,-1)
 GUICtrlSetResizing(-1,258)
-$chMobile = GUICtrlCreateCheckbox("Mobile",53,130,60,20,-1,-1)
-GUICtrlSetResizing(-1,770)
+$gpTotalCount = GUICtrlCreateGroup("",181,360,830,215,-1,-1)
+GUICtrlSetResizing(-1,904)
+GUICtrlCreateLabel("Urgent",356,370,60,18,-1,-1)
+GUICtrlSetFont(-1,10,400,0,"MS Sans Serif")
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetResizing(-1,904)
+GUICtrlCreateLabel("Assembly",766,370,62,18,-1,-1)
+GUICtrlSetFont(-1,10,400,0,"MS Sans Serif")
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetResizing(-1,904)
+$listviewTotalUrgent = GUICtrlCreatelistview("Laptop|PC|Mobile",221,396,350,102,-1,$WS_EX_CLIENTEDGE)
+GUICtrlSetResizing(-1,904)
+$listviewTotalAssembly = GUICtrlCreatelistview("Laptop|PC|Mobile",618,396,350,102,-1,$WS_EX_CLIENTEDGE)
+GUICtrlSetResizing(-1,904)
+_GUICtrlListView_SetColumnWidth($listviewTotalUrgent, 0, 116)
+_GUICtrlListView_SetColumnWidth($listviewTotalUrgent, 1, 116)
+_GUICtrlListView_SetColumnWidth($listviewTotalUrgent, 2, 100)
+
+_GUICtrlListView_SetColumnWidth($listviewTotalAssembly, 0, 116)
+_GUICtrlListView_SetColumnWidth($listviewTotalAssembly, 1, 116)
+_GUICtrlListView_SetColumnWidth($listviewTotalAssembly, 2, 100)
+$lblUrgentTotal = GUICtrlCreateLabel("Total :",290,510,144,15,-1,-1)
+GUICtrlSetFont(-1,10,700,0,"MS Sans Serif")
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetResizing(-1,904)
+$lblAssemblyTotal = GUICtrlCreateLabel("Total :",703,510,170,15,-1,-1)
+GUICtrlSetFont(-1,10,700,0,"MS Sans Serif")
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetResizing(-1,904)
+$btnTotalCount = GUICtrlCreateButton("Total Count",251,540,707,30,-1,-1)
+GUICtrlSetResizing(-1,904)
 _GUICtrlTab_SetCurFocus($tab,0)
 
 
@@ -184,7 +215,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=0
-[0x00081F30]
+[0x00091D1A]
 order=0
 [TABPAGE3]
 page=3
@@ -237,7 +268,7 @@ gui_event_resized=
 gui_event_dropped=
 defaultfont=MS Sans Serif
 defaultfontsize=8
-[0x00011F34]
+[0x0020026A]
 type=input
 handle=434
 locked=0
@@ -266,7 +297,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F36]
+[0x000C1C34]
 type=input
 handle=435
 locked=0
@@ -295,7 +326,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=4
-[0x00011F38]
+[0x0004187A]
 type=input
 handle=436
 locked=0
@@ -324,7 +355,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=3
-[0x00011F3A]
+[0x00051878]
 type=label
 handle=437
 locked=0
@@ -348,12 +379,12 @@ style=
 exstyle=
 bgcolour=-2
 code=
-order=18
+order=17
 tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F3C]
+[0x0006186C]
 type=label
 handle=438
 locked=0
@@ -381,8 +412,8 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-order=19
-[0x00011F3E]
+order=18
+[0x0006187C]
 type=label
 handle=439
 locked=0
@@ -410,8 +441,8 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-order=20
-[0x00011F40]
+order=19
+[0x00051880]
 type=button
 handle=440
 locked=0
@@ -440,7 +471,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F42]
+[0x00031884]
 type=label
 handle=441
 locked=0
@@ -468,8 +499,8 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-order=21
-[0x00011F44]
+order=20
+[0x0004187E]
 type=label
 handle=442
 locked=0
@@ -497,8 +528,8 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-order=22
-[0x00011F46]
+order=21
+[0x00031B10]
 type=label
 handle=443
 locked=0
@@ -526,8 +557,8 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-order=23
-[0x00011F48]
+order=22
+[0x00051B14]
 type=label
 handle=444
 locked=0
@@ -555,8 +586,8 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-order=24
-[0x00011F4A]
+order=23
+[0x00041882]
 type=input
 handle=445
 locked=0
@@ -585,7 +616,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=7
-[0x00011F4C]
+[0x00041B12]
 type=input
 handle=446
 locked=0
@@ -614,7 +645,7 @@ iconindex=
 iconlarge=0
 textmode=text
 order=8
-[0x00011F4E]
+[0x00041B16]
 type=input
 handle=447
 locked=0
@@ -642,8 +673,8 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-order=14
-[0x00011F50]
+order=13
+[0x00031B18]
 type=input
 handle=448
 locked=0
@@ -671,8 +702,8 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-order=15
-[0x00011F52]
+order=14
+[0x00031B1A]
 type=button
 handle=449
 locked=0
@@ -696,12 +727,12 @@ style=
 exstyle=
 bgcolour=
 code=
-order=17
+order=16
 tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F54]
+[0x00031B1C]
 type=date
 handle=450
 locked=0
@@ -725,12 +756,12 @@ style=$DTS_SHORTDATEFORMAT
 exstyle=
 bgcolour=
 code=
-order=16
+order=15
 tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F56]
+[0x00031B20]
 type=listview
 handle=451
 locked=0
@@ -738,7 +769,7 @@ resize=6
 x=181
 y=40
 width=830
-height=515
+height=303
 func=
 font=MS Sans Serif
 fontsize=8
@@ -754,12 +785,12 @@ style=$LVS_REPORT
 exstyle=
 bgcolour=
 code=_GUICtrlListView_SetColumnWidth($listviewReport, 7, 200)
-order=29
+order=27
 tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00021F5C]
+[0x000419C6]
 type=group
 handle=452
 locked=0
@@ -788,7 +819,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F5E]
+[0x00031B0E]
 type=radio
 handle=453
 locked=0
@@ -817,7 +848,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F60]
+[0x00041B26]
 type=radio
 handle=454
 locked=0
@@ -846,7 +877,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F62]
+[0x000419C8]
 type=radio
 handle=455
 locked=0
@@ -875,7 +906,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F64]
+[0x000619CA]
 type=label
 handle=456
 locked=0
@@ -903,8 +934,8 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-order=25
-[0x00011F66]
+order=24
+[0x000519CC]
 type=group
 handle=457
 locked=0
@@ -928,12 +959,12 @@ style=
 exstyle=
 bgcolour=
 code=
-order=34
+order=31
 tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F68]
+[0x000319D2]
 type=date
 handle=458
 locked=0
@@ -957,12 +988,12 @@ style=$DTS_SHORTDATEFORMAT
 exstyle=
 bgcolour=
 code=
-order=27
+order=25
 tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F6A]
+[0x000319D0]
 type=button
 handle=459
 locked=0
@@ -986,12 +1017,12 @@ style=
 exstyle=
 bgcolour=
 code=
-order=30
+order=28
 tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F6C]
+[0x000319CE]
 type=radio
 handle=460
 locked=0
@@ -1020,7 +1051,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F6E]
+[0x000319D4]
 type=radio
 handle=461
 locked=0
@@ -1049,7 +1080,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F70]
+[0x000319D6]
 type=combo
 handle=462
 locked=0
@@ -1078,7 +1109,7 @@ tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F76]
+[0x000319DC]
 type=group
 handle=463
 locked=0
@@ -1102,12 +1133,12 @@ style=
 exstyle=
 bgcolour=
 code=Dim $aGroupUrgent[7][BREAK][BREAK]	$aGroupUrgent[0] = $radioExp[BREAK]	$aGroupUrgent[1] = $radioExt[BREAK]	$aGroupUrgent[2] = $radioWithin[BREAK]	$aGroupUrgent[3] = $lblError[BREAK]	$aGroupUrgent[4] = $lblWarranty[BREAK]	$aGroupUrgent[5] = $editError[BREAK]	$aGroupUrgent[6] = $gpWarranty[BREAK]
-order=28
+order=26
 tabpage=0
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F78]
+[0x000319DE]
 type=radio
 handle=464
 locked=0
@@ -1131,12 +1162,12 @@ style=
 exstyle=
 bgcolour=
 code=
-order=32
+order=29
 tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F7A]
+[0x000319E0]
 type=radio
 handle=465
 locked=0
@@ -1160,12 +1191,12 @@ style=
 exstyle=
 bgcolour=
 code=
-order=33
+order=30
 tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F7C]
+[0x000319E2]
 type=listview
 handle=466
 locked=0
@@ -1189,12 +1220,12 @@ style=$LVS_SORTASCENDING
 exstyle=
 bgcolour=
 code=
-order=40
+order=38
 tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00021F82]
+[0x000419EC]
 type=button
 handle=467
 locked=0
@@ -1218,12 +1249,12 @@ style=
 exstyle=
 bgcolour=
 code=
-order=35
+order=33
 tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F84]
+[0x000319EA]
 type=button
 handle=468
 locked=0
@@ -1247,12 +1278,12 @@ style=
 exstyle=
 bgcolour=
 code=
-order=36
+order=34
 tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F86]
+[0x000419E8]
 type=button
 handle=469
 locked=0
@@ -1276,12 +1307,12 @@ style=
 exstyle=
 bgcolour=
 code=
-order=37
+order=35
 tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F88]
+[0x000319EE]
 type=input
 handle=470
 locked=0
@@ -1305,12 +1336,12 @@ style=$ES_UPPERCASE
 exstyle=$WS_EX_CLIENTEDGE
 bgcolour=
 code=
-order=38
+order=36
 tabpage=2
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F8A]
+[0x000319F0]
 type=button
 handle=471
 locked=0
@@ -1334,12 +1365,12 @@ style=
 exstyle=
 bgcolour=
 code=
-order=46
+order=41
 tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F8C]
+[0x000319F2]
 type=label
 handle=472
 locked=0
@@ -1363,12 +1394,12 @@ style=
 exstyle=
 bgcolour=-2
 code=
-order=39
+order=37
 tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F8E]
+[0x000319F4]
 type=button
 handle=473
 locked=0
@@ -1392,12 +1423,12 @@ style=
 exstyle=
 bgcolour=
 code=
-order=45
+order=40
 tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F90]
+[0x000319F6]
 type=checkbox
 handle=474
 locked=0
@@ -1421,12 +1452,12 @@ style=
 exstyle=
 bgcolour=
 code=
-order=49
+order=32
 tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
-[0x00011F92]
+[0x000319F8]
 type=listview
 handle=475
 locked=0
@@ -1450,9 +1481,241 @@ style=
 exstyle=$WS_EX_CLIENTEDGE
 bgcolour=
 code=
+order=39
+tabpage=1
+iconindex=
+iconlarge=0
+textmode=text
+[0x000419FE]
+type=listview
+handle=476
+locked=0
+resize=904
+x=221
+y=396
+width=350
+height=102
+func=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=$listviewTotalUrgent
+text=Laptop|PC|Mobile
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=$WS_EX_CLIENTEDGE
+bgcolour=
+code=
+order=45
+tabpage=1
+iconindex=
+iconlarge=0
+textmode=text
+[0x00041A04]
+type=button
+handle=477
+locked=0
+resize=904
+x=251
+y=540
+width=707
+height=30
+func=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=$btnTotalCount
+text=Total Count
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+bgcolour=
+code=
+order=49
+tabpage=1
+iconindex=
+iconlarge=0
+textmode=text
+[0x00031A06]
+type=listview
+handle=478
+locked=0
+resize=904
+x=618
+y=396
+width=350
+height=102
+func=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=$listviewTotalAssembly
+text=Laptop|PC|Mobile
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=$WS_EX_CLIENTEDGE
+bgcolour=
+code=_GUICtrlListView_SetColumnWidth($listviewTotalUrgent, 0, 116)[BREAK]_GUICtrlListView_SetColumnWidth($listviewTotalUrgent, 1, 116)[BREAK]_GUICtrlListView_SetColumnWidth($listviewTotalUrgent, 2, 100)[BREAK][BREAK]_GUICtrlListView_SetColumnWidth($listviewTotalAssembly, 0, 116)[BREAK]_GUICtrlListView_SetColumnWidth($listviewTotalAssembly, 1, 116)[BREAK]_GUICtrlListView_SetColumnWidth($listviewTotalAssembly, 2, 100)
+tabpage=1
+iconindex=
+iconlarge=0
+textmode=text
+order=46
+[0x00041A0C]
+type=label
+handle=479
+locked=0
+resize=904
+x=356
+y=370
+width=60
+height=18
+func=
+font=MS Sans Serif
+fontsize=10
+fontstyle=400
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=
+text=Urgent
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+bgcolour=-2
+code=
 order=43
 tabpage=1
 iconindex=
 iconlarge=0
 textmode=text
+[0x00041BB0]
+type=label
+handle=480
+locked=0
+resize=904
+x=766
+y=370
+width=62
+height=18
+func=
+font=MS Sans Serif
+fontsize=10
+fontstyle=400
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=
+text=Assembly
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+bgcolour=-2
+code=
+tabpage=1
+iconindex=
+iconlarge=0
+textmode=text
+order=44
+[0x000A1A10]
+type=group
+handle=481
+locked=0
+resize=904
+x=181
+y=360
+width=830
+height=215
+func=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=$gpTotalCount
+text=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+bgcolour=
+code=
+order=42
+tabpage=1
+iconindex=
+iconlarge=0
+textmode=text
+[0x00031A0E]
+type=label
+handle=482
+locked=0
+resize=904
+x=290
+y=510
+width=144
+height=15
+func=
+font=MS Sans Serif
+fontsize=10
+fontstyle=700
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=$lblUrgentTotal
+text=Total :
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+bgcolour=-2
+code=
+order=47
+tabpage=1
+iconindex=
+iconlarge=0
+textmode=text
+[0x00161D1C]
+type=label
+handle=491
+locked=0
+resize=904
+x=703
+y=510
+width=170
+height=15
+func=
+font=MS Sans Serif
+fontsize=10
+fontstyle=700
+fontattribute=0
+tooltip=
+bgimage=
+textcolour=0x000000
+id=$lblAssemblyTotal
+text=Total :
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+bgcolour=-2
+code=
+tabpage=1
+iconindex=
+iconlarge=0
+textmode=text
+order=48
 #ce
