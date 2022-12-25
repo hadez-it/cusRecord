@@ -59,7 +59,7 @@ Local $userName = "", $checkRadioReport = "Urgent",  $checkRadioSearch = "Name",
 Local $previousKey = ""
 Local $rawEditData = ""
 Local $sStyle = "yyyy-MM-dd"
-Local $laptopChassisType = [8 , 9, 10, 11, 12, 14, 18, 21]
+Local $laptopChassisType = [8 , 9, 10, 11, 12, 14, 18, 21, 31]
 Local $arrMousePOS = IniReadSection(@ScriptDir & "\config.ini", "mousepos")
 
 GUICtrlSendMsg($editDateFieldReport, $DTM_SETFORMATW, 0, $sStyle)
