@@ -543,7 +543,7 @@ Func ShowTotalCount()
 			$query = StringFormat('SELECT COUNT(AsUrg) as totalUrgent FROM records WHERE recordDate="%s" AND AsUrg="Urgent";', $date)
 			$urgentTotal = _excuteSQL($query)
 			
-			For $x = 0 To _ArrayMax($arrSize) -1
+			For $x = 0 To _ArrayMax($arrSize) -2
 				GUICtrlCreateListViewItem(StringFormat('%s|%s|%s',$arrListViewCount[$x][0],$arrListViewCount[$x][1],$arrListViewCount[$x][2] ), $listviewTotalUrgent)
 			Next ;end adding items to listview
 			
@@ -552,7 +552,7 @@ Func ShowTotalCount()
 			$query = StringFormat('SELECT COUNT(AsUrg) as totalUrgent FROM records WHERE recordDate="%s" AND AsUrg="Assembly";', $date)
 			$assemblyTotal = _excuteSQL($query)
 		
-			For $x = 0 To _ArrayMax($arrSize) -1
+			For $x = 0 To _ArrayMax($arrSize) -2
 				GUICtrlCreateListViewItem(StringFormat('%s|%s|%s',$arrListViewCount[$x][0],$arrListViewCount[$x][1],$arrListViewCount[$x][2] ), $listviewTotalAssembly)
 			Next ;end adding items to listview
 			
